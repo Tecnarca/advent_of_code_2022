@@ -21,9 +21,9 @@ with open("input") as input_file:
 stack_columns = [parse_stack(all_lines[:8], column) for column in range(9)]
 move_operations = [parse_operation(move_operation) for move_operation in all_lines[10:]]
 
-for operation in move_operations:
-    boxes = stack_columns[operation[1]][:operation[0]]
-    stack_columns[operation[1]] = stack_columns[operation[1]][operation[0]:]
-    stack_columns[operation[2]] = boxes + stack_columns[operation[2]]
+for how_many, from_stack, to_stack in move_operations:
+    boxes = stack_columns[from_stack][:how_many]
+    stack_columns[from_stack] = stack_columns[from_stack][how_many:]
+    stack_columns[to_stack] = boxes + stack_columns[to_stack]
 
 print("".join(list(zip(*stack_columns))[0]))
