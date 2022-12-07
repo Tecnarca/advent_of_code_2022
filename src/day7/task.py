@@ -8,6 +8,7 @@ def parse_cd(path_string: str, pwd: Path) -> Path:
 
 folders = defaultdict(lambda: 0)
 current_directory = Path("/")
+
 with open("input") as input_file:
     for line_with_newline in input_file:
         line = line_with_newline[:-1]
